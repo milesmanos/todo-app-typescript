@@ -1,4 +1,5 @@
 import React from 'react'
+import { Checkbox, FormControlLabel } from '@material-ui/core'
 
 interface TodoProps {
   todo: {
@@ -13,13 +14,12 @@ const Todo: React.FunctionComponent<TodoProps> = ({ todo, toggleComplete }) => {
   function runTodoClick() {
     toggleComplete(todo.id)
   }
+
   return (
-    <>
-      <div>
-        <input type="checkbox" checked={todo.complete} onChange={runTodoClick} />
-        <span>{todo.name}</span>
-      </div>
-    </>
+    <FormControlLabel
+      control={<Checkbox checked={todo.complete} onChange={runTodoClick} name="todo" color="secondary" />}
+      label={todo.name}
+    />
   )
 }
 
